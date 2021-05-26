@@ -1,0 +1,62 @@
+@host = {{$dotenv HOSTNAME}}:{{$dotenv PORT}}
+@baseUrl = http://{{host}}
+
+# @name signup
+POST {{baseUrl}}/register
+Content-Type: application/json
+
+{
+    "username": "Bryan",
+    "password": "password"
+}
+
+###
+
+# @name login
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "username": "Bryan",
+    "password": "password"
+}
+
+###
+
+@accessToken = {{login.response.body.accessToken}}
+// When this access token expires take another one from {{refreshAccessToken.response.body.accessToken}}
+
+# @name posts
+GET {{baseUrl}}/posts
+Authorization: Bearer {{accessToken}}
+
+###
+
+# @name users
+GET {{baseUrl}}/users
+Authorization: Bearer {{accessToken}}
+
+###
+
+@refreshToken = {{login.response.body.refreshToken}}
+
+# @name refreshAccessToken
+POST {{baseUrl}}/token
+Content-Type: application/json
+
+{
+    "token": "{{refreshToken}}"
+}
+
+###
+
+# @name logout
+DELETE {{baseUrl}}/logout
+Content-Type: application/json
+
+{
+    "token": "{{refreshToken}}"
+}
+
+
+
