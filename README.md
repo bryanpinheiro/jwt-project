@@ -19,6 +19,13 @@ Then, add these variables:
 `PORT`
 `ACCESS_TOKEN_SECRET`
 `REFRESH_TOKEN_SECRET`
+
+:bulb:***TIP**: run the commands below on your terminal to generate random secrets.*
+```
+node
+
+require("crypto").randomBytes(64).toString("base64")
+```
    
 ### 3. Starting the server
 ```
