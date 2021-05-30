@@ -39,4 +39,4 @@ After installing the `Rest Client` extension on `vscode`, open the `requests.res
 ### 1. JSON Web Tokens (JWT)
 
 JWT is a **method for authentication**, for instance, suppose we want to get just a `token` without the need to verify the **user credentials** again.
-And, if this token have an **expiration time**, we could use another token called `refreshToken` to generate another one for a short period.
+And, if this token has an **expiration time**, we could use another token called `refreshToken` to generate another one for a short period.
